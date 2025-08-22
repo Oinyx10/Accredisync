@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HOD Sign Up</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      background: #f5f7fa;
+    }
+
+    .signup-card, .dashboard {
+      width: min(92vw, 800px);
+      background: #fff;
+      padding: 28px;
+      margin: 50px auto;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 26px;
+      margin-bottom: 20px;
+      color: #0a63ff;
+    }
+
+    .field {
+      margin: 14px 0;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 14px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .field input, .field select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #d8dbe2;
+      border-radius: 8px;
+      outline: none;
+    }
+
+    .btn-primary {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      margin-top: 18px;
+      background: #0a63ff;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      filter: brightness(0.95);
+    }
+
+    .dashboard h3 {
+      color: #0a63ff;
+      margin-top: 20px;
+    }
+
+    .alerts {
+      background: #fff3cd;
+      border: 1px solid #ffeeba;
+      padding: 12px;
+      border-radius: 8px;
+      margin: 10px 0;
+    }
+
+    .report-btn {
+      margin-top: 10px;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 8px;
+      background: #28a745;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .report-btn:hover {
+      background: #218838;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- HOD Signup Page -->
+  <div class="signup-card" id="signup">
+    <h2>Sign Up as HOD</h2>
+
+    <form onsubmit="event.preventDefault(); openDashboard();">
+      <div class="field">
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="Enter username" required />
+      </div>
+
+      <div class="field">
+        <label for="email">Institutional Email</label>
+        <input type="email" id="email" placeholder="Enter institutional email" required />
+      </div>
+
+      <div class="field">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter password" required />
+      </div>
+
+      <div class="field">
+        <label for="department">Designated Department</label>
+        <select id="department" required>
+          <option value="">Select Department</option>
+          <option value="cse">Computer Science</option>
+          <option value="ece">Electronics & Communication</option>
+          <option value="eee">Electrical Engineering</option>
+          <option value="me">Mechanical Engineering</option>
+          <option value="ce">Civil Engineering</option>
+          <option value="it">Information Technology</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn-primary">Sign Up</button>
+    </form>
+  </div>
+
+  <!-- HOD Dashboard -->
+  <div class="dashboard" id="dashboard" style="display:none;">
+    <h2>HOD Dashboard</h2>
+
+    <!-- Alerts Section -->
+    <div class="alerts">
+      <strong>⚠ Alerts:</strong>
+      <p>Department data for Accreditation Cycle 2025 is pending submission.</p>
+      <p>Last date for report upload: <strong>30th August 2025</strong>.</p>
+    </div>
+
+    <!-- Departmental Data Input -->
+    <h3>Departmental Data Input</h3>
+    <form>
+      <div class="field">
+        <label for="faculty-count">Number of Faculty Members</label>
+        <input type="number" id="faculty-count" placeholder="Enter faculty count" required />
+      </div>
+      <div class="field">
+        <label for="student-count">Number of Students</label>
+        <input type="number" id="student-count" placeholder="Enter student count" required />
+      </div>
+      <div class="field">
+        <label for="infra">Infrastructure Details</label>
+        <input type="text" id="infra" placeholder="Enter infrastructure details" required />
+      </div>
+      <button type="submit" class="btn-primary">Save Department Data</button>
+    </form>
+
+    <!-- Report Section -->
+    <h3>Department Reports</h3>
+    <p>Generate or view accreditation reports specific to your department.</p>
+    <button class="report-btn">📄 Generate Report</button>
+    <button class="report-btn">👁 View Reports</button>
+  </div>
+
+  <script>
+    function openDashboard() {
+      document.getElementById("signup").style.display = "none";
+      document.getElementById("dashboard").style.display = "block";
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HOD Sign Up</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      background: #f5f7fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .signup-card {
+      width: min(92vw, 500px);
+      background: #fff;
+      padding: 28px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .signup-card h2 {
+      text-align: center;
+      font-size: 26px;
+      margin-bottom: 20px;
+      color: #0a63ff;
+    }
+
+    .field {
+      margin: 14px 0;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 14px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .field input, .field select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #d8dbe2;
+      border-radius: 8px;
+      outline: none;
+    }
+
+    .field input:focus, .field select:focus {
+      border-color: #0a63ff;
+      box-shadow: 0 0 0 3px rgba(10, 99, 255, 0.2);
+    }
+
+    .btn-primary {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      margin-top: 18px;
+      background: #0a63ff;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      filter: brightness(0.95);
+    }
+
+    .links {
+      margin-top: 14px;
+      text-align: center;
+    }
+
+    .links a {
+      color: #0a63ff;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="signup-card">
+    <h2>Sign Up as HOD</h2>
+
+    <form>
+      <div class="field">
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="Enter username" required />
+      </div>
+
+      <div class="field">
+        <label for="email">Institutional Email</label>
+        <input type="email" id="email" placeholder="Enter institutional email" required />
+      </div>
+
+      <div class="field">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter password" required />
+      </div>
+
+      <div class="field">
+        <label for="department">Designated Department</label>
+        <select id="department" required>
+          <option value="">Select Department</option>
+          <option value="cse">Computer Science</option>
+          <option value="ece">Electronics & Communication</option>
+          <option value="eee">Electrical Engineering</option>
+          <option value="me">Mechanical Engineering</option>
+          <option value="ce">Civil Engineering</option>
+          <option value="it">Information Technology</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn-primary">Sign Up</button>
+    </form>
+
+    <div class="links">
+      <p>Already have an account? <a href="#">Log In</a></p>
+    </div>
+  </div>
+</body>
+</html>

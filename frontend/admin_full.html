@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ACCREDISYNC - Admin Flow</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f9;
+    }
+    .container {
+      max-width: 450px;
+      margin: 60px auto;
+      background: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    .btn {
+      width: 100%;
+      padding: 10px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+    .btn:hover { background: #0056b3; }
+    .hidden { display: none; }
+    /* Sidebar + Dashboard */
+    .sidebar {
+      width: 220px;
+      background: #343a40;
+      color: white;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      padding-top: 20px;
+    }
+    .sidebar h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 20px;
+      letter-spacing: 1px;
+    }
+    .sidebar ul { list-style: none; padding: 0; }
+    .sidebar ul li {
+      padding: 15px 20px;
+      cursor: pointer;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .sidebar ul li:hover, .sidebar ul li.active {
+      background: #007bff;
+    }
+    .main-content { margin-left: 220px; padding: 20px; }
+    .card {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+    table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+    table, th, td { border: 1px solid #ddd; }
+    th, td { padding: 10px; text-align: left; }
+    th { background: #007bff; color: white; }
+    .btn.small { padding: 6px 12px; font-size: 13px; width: auto; }
+    .btn.add { background: #28a745; }
+    .btn.edit { background: #ffc107; color: black; }
+    .btn.delete { background: #dc3545; }
+  </style>
+</head>
+<body>
+
+  <!-- Step 1: Admin Signup -->
+  <div id="signupPage" class="container">
+    <h2>Sign Up to ACCREDISYNC (Admin)</h2>
+    <form onsubmit="nextStep(event, 'setupPage')">
+      <label>Username</label>
+      <input type="text" required>
+      <label>Institutional Email</label>
+      <input type="email" required>
+      <label>Password</label>
+      <input type="password" required>
+      <button type="submit" class="btn">Sign Up</button>
+    </form>
+  </div>
+
+  <!-- Step 2: Admin Setup -->
+  <div id="setupPage" class="container hidden">
+    <h2>Admin Setup</h2>
+    <form onsubmit="nextStep(event, 'dashboardPage')">
+      <label>Designation</label>
+      <select required>
+        <option value="">Select</option>
+        <option>Principal</option>
+        <option>Vice Principal</option>
+        <option>Dean</option>
+        <option>Director</option>
+      </select>
+      <label>Institution Name</label>
+      <input type="text" required>
+      <label>Institution Address</label>
+      <input type="text" required>
+      <label>Contact Number</label>
+      <input type="text" required>
+      <button type="submit" class="btn">Save & Continue</button>
+    </form>
+  </div>
+
+  <!-- Step 3: Dashboard -->
+  <div id="dashboardPage" class="hidden">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <h2>ACCREDISYNC</h2>
+      <ul>
+        <li class="active" onclick="showSection('dashboard')">Dashboard</li>
+        <li onclick="showSection('userManagement')">User Management</li>
+        <li onclick="showSection('accreditation')">Manage Accreditation</li>
+        <li onclick="showSection('reports')">Report Generation</li>
+      </ul>
+    </div>
+    <!-- Main Content -->
+    <div class="main-content">
+      <div id="dashboard" class="section">
+        <h2>Welcome Admin!</h2>
+        <div class="card">
+          <h3>Quick Overview</h3>
+          <p>✔ Users registered: 12</p>
+          <p>✔ Accreditation progress: 65%</p>
+          <p>✔ Reports generated: 4</p>
+        </div>
+      </div>
+      <div id="userManagement" class="section hidden">
+        <h2>User Management</h2>
+        <button class="btn small add">+ Add User</button>
+        <table>
+          <tr><th>Username</th><th>Role</th><th>Actions</th></tr>
+          <tr><td>JohnDoe</td><td>Faculty</td><td>
+            <button class="btn small edit">Edit</button>
+            <button class="btn small delete">Delete</button></td></tr>
+          <tr><td>JaneSmith</td><td>HOD</td><td>
+            <button class="btn small edit">Edit</button>
+            <button class="btn small delete">Delete</button></td></tr>
+        </table>
+      </div>
+      <div id="accreditation" class="section hidden">
+        <h2>Accreditation Process</h2>
+        <div class="card">
+          <h3>Ongoing Accreditation</h3>
+          <p>Status: In Progress (65%)</p>
+          <button class="btn small">Upload Documents</button>
+          <button class="btn small">View Checklist</button>
+        </div>
+      </div>
+      <div id="reports" class="section hidden">
+        <h2>Report Generation</h2>
+        <div class="card">
+          <h3>Generate Reports</h3>
+          <p>Select an accreditation cycle and generate reports instantly.</p>
+          <button class="btn small">Generate Report</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function nextStep(event, nextId) {
+      event.preventDefault();
+      document.querySelectorAll('.container, #dashboardPage').forEach(el => el.classList.add('hidden'));
+      document.getElementById(nextId).classList.remove('hidden');
+    }
+    function showSection(sectionId) {
+      document.querySelectorAll('.section').forEach(sec => sec.classList.add('hidden'));
+      document.getElementById(sectionId).classList.remove('hidden');
+      document.querySelectorAll('.sidebar ul li').forEach(li => li.classList.remove('active'));
+      event.target.classList.add('active');
+    }
+  </script>
+
+</body>
+</html>

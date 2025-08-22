@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Setup - ACCREDISYNC</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+    .header {
+      background: #343a40;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      font-size: 22px;
+      font-weight: bold;
+    }
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
+    }
+    .container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+      color: #333;
+    }
+    .form-group input, 
+    .form-group select, 
+    .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+    }
+    .btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .btn.save {
+      background: #007bff;
+      color: white;
+    }
+    .btn.edit {
+      background: #6c757d;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">Admin Setup - ACCREDISYNC</div>
+  
+  <div class="container">
+    <h2>Institution & Designation Details</h2>
+    <form action="admin_dashboard.html" method="post">
+      <div class="form-group">
+        <label for="designation">Admin Designation</label>
+        <select id="designation" name="designation" required>
+          <option value="">-- Select Designation --</option>
+          <option value="principal">Principal</option>
+          <option value="dean">Dean</option>
+          <option value="hod">Head of Department</option>
+          <option value="accreditation_officer">Accreditation Officer</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="institutionName">Institution Name</label>
+        <input type="text" id="institutionName" name="institutionName" required>
+      </div>
+      <div class="form-group">
+        <label for="institutionAddress">Institution Address</label>
+        <textarea id="institutionAddress" name="institutionAddress" rows="3" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="contact">Institution Contact</label>
+        <input type="text" id="contact" name="contact" required>
+      </div>
+      <div class="form-group">
+        <label for="accreditationID">Accreditation ID</label>
+        <input type="text" id="accreditationID" name="accreditationID" required>
+      </div>
+
+      <div class="buttons">
+        <button type="button" class="btn edit">Edit</button>
+        <button type="submit" class="btn save">Save</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

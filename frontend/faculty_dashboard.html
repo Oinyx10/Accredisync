@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Faculty Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      background: #f5f7fa;
+    }
+    header {
+      background: #0a63ff;
+      color: #fff;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h2 {
+      margin: 0;
+    }
+    .container {
+      padding: 25px;
+    }
+    .dashboard-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    }
+    .dashboard-card h3 {
+      margin-top: 0;
+      color: #0a63ff;
+    }
+    textarea, input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+    .btn {
+      margin-top: 10px;
+      padding: 10px 14px;
+      border: none;
+      border-radius: 8px;
+      background: #0a63ff;
+      color: #fff;
+      cursor: pointer;
+    }
+    .btn:hover {
+      filter: brightness(0.95);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h2>Faculty Dashboard</h2>
+  </header>
+
+  <div class="container">
+
+    <div class="dashboard-card">
+      <h3>Teaching-Learning</h3>
+      <textarea rows="4" placeholder="Enter details about teaching-learning..."></textarea>
+      <button class="btn">Save</button>
+    </div>
+
+    <div class="dashboard-card">
+      <h3>Research</h3>
+      <input type="file" accept="application/pdf">
+      <button class="btn">Upload PDF</button>
+    </div>
+
+    <div class="dashboard-card">
+      <h3>Infrastructure</h3>
+      <textarea rows="4" placeholder="Enter infrastructure details..."></textarea>
+      <button class="btn">Save</button>
+    </div>
+
+  </div>
+
+</body>
+</html>

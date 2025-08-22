@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login Page</title>
+  <style>
+    /* Base & layout */
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; }
+    body { font-family: Arial, Helvetica, sans-serif; }
+    .page {
+      min-height: 100dvh;           /* robust viewport height on mobile/desktop */
+      display: grid;                /* bulletproof centering */
+      place-items: center;          /* centers both axes */
+      background: #f5f7fa;
+      padding: 24px;                /* breathing room on small screens */
+    }
+
+    /* Card */
+    .login-card {
+      width: min(92vw, 520px);      /* center + responsive */
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      padding: 28px;
+    }
+    .login-card h2 {
+      margin: 4px 0 18px;
+      text-align: center;
+      font-size: 32px;
+      line-height: 1.2;
+    }
+
+    /* Inputs */
+    .field { position: relative; margin: 12px 0; }
+    .field input[type="email"],
+    .field input[type="password"],
+    .field input[type="text"] {
+      width: 100%;
+      padding: 12px 14px 12px 40px;
+      border: 1px solid #d8dbe2;
+      border-radius: 8px;
+      outline: none;
+    }
+    .field input:focus { border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59,130,246,.15); }
+    .icon {
+      position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+      font-size: 16px; opacity: .8; pointer-events: none;
+    }
+
+    /* Captcha row */
+    .captcha-row {
+      display: grid;
+      grid-template-columns: 1fr 190px 40px;  /* captcha text | input | refresh */
+      align-items: center;
+      gap: 10px;
+      margin: 8px 0 18px;
+    }
+    .captcha-text {
+      font-weight: 700; font-size: 22px; letter-spacing: 8px; user-select: none;
+    }
+    .refresh-btn {
+      display: inline-grid; place-items: center;
+      height: 40px; width: 40px; border-radius: 8px;
+      border: 1px solid #d8dbe2; background: #fff; cursor: pointer;
+    }
+
+    /* Primary button */
+    .btn-primary { width: 100%; padding: 12px; font-size: 18px; border: 0; border-radius: 8px; color: #fff; background: #0a63ff; cursor: pointer; }
+    .btn-primary:hover { filter: brightness(0.98); }
+
+    /* Footer message */
+    .footer-msg {
+      margin-top: 14px;
+      font-size: 14px;
+      text-align: center;
+    }
+    .footer-msg a { color: #0a63ff; text-decoration: none; font-weight: bold; }
+
+    .supported { text-align: center; color: #6b7280; font-size: 12px; margin-top: 12px; }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="login-card">
+      <h2>Login</h2>
+
+      <div class="field">
+        <span class="icon">📧</span>
+        <input type="email" placeholder="Enter institutional email" />
+      </div>
+
+      <div class="field">
+        <span class="icon">🔒</span>
+        <input type="password" placeholder="Enter password" />
+      </div>
+
+      <div class="captcha-row">
+        <div id="captcha-text" class="captcha-text"></div>
+        <input id="captcha-input" type="text" placeholder="captcha" />
+        <button class="refresh-btn" onclick="generateCaptcha()" aria-label="Refresh Captcha">⟲</button>
+      </div>
+
+      <button class="btn-primary" onclick="validateCaptcha()">Log In</button>
+
+      <div class="footer-msg">
+        Don't have an account? <a href="file:///C:/Users/chakr/OneDrive/Documents/New%20folder/signup.html">Sign Up</a>
+      </div>
+
+      <div class="supported">Supported Browsers: IE11+, Chrome 21+, Firefox 28+</div>
+    </div>
+  </main>
+
+  <script>
+    function generateCaptcha() {
+      const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789';
+      let raw = '';
+      for (let i = 0; i < 5; i++) raw += chars[Math.floor(Math.random() * chars.length)];
+      document.getElementById('captcha-text').textContent = raw.split('').join(' ');
+      document.getElementById('captcha-input').value = '';
+      document.getElementById('captcha-input').focus();
+    }
+    function validateCaptcha() {
+      const expected = document.getElementById('captcha-text').textContent.replace(/\s+/g, '');
+      const typed = document.getElementById('captcha-input').value.trim();
+      if (!typed) return alert('Please enter the captcha.');
+      if (typed === expected) alert('Captcha verified! (hook up login here)');
+      else { alert('Invalid captcha. Try again.'); generateCaptcha(); }
+    }
+    window.addEventListener('load', generateCaptcha);
+  </script>
+</body>
+</html>
